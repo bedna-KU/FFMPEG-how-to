@@ -1,4 +1,4 @@
-# FFMPEG-how-to
+# FFMPEG
 A few examples of how I use ffmpeg
 
 ### Convert video to images (3frames per second)
@@ -24,6 +24,10 @@ ffmpeg -i video.mkv -i audio.mp3 -codec copy -shortest output.mkv
 ## Video - cut (from position - length)
 
 ffmpeg -ss 00:00:30 -i input.mp4 -t 00:00:05 -vcodec copy -acodec copy output.mp4
+
+## Repair video
+
+ffmpeg –i input.avi –map 0 –ignore_unknown/-copy_unknown –c copy output.avi
 
 # ImageMagick
 
