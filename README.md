@@ -25,6 +25,8 @@ ffmpeg -i video.mkv -i audio.mp3 -codec copy -shortest output.mkv
 
 ffmpeg -ss 00:00:30 -i input.mp4 -t 00:00:05 -vcodec copy -acodec copy output.mp4
 
-### Resize images (no aspect ratio)
+# ImageMagick
+
+## Resize images (no aspect ratio)
 
 convert '*.jpg[224x224!]' resized%03d.png
