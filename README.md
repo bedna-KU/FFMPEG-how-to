@@ -25,9 +25,9 @@ ffmpeg -i video.mkv -i audio.mp3 -codec copy -shortest output.mkv
 
 ffmpeg -ss 00:00:30 -i input.mp4 -t 00:00:05 -vcodec copy -acodec copy output.mp4
 
-## Repair video
+## Repair video (all frames as keyframe (keyint=1))
 
-ffmpeg –i input.avi –map 0 –ignore_unknown/-copy_unknown –c copy output.avi
+fffmpeg -i cam2a.mp4 -vcodec libx264 -x264-params keyint=1:scenecut=0 -acodec copy cam2a2.mp4
 
 # ImageMagick
 
