@@ -1,5 +1,4 @@
 # FFMPEG
-A few examples of how I use ffmpeg
 
 ### Convert video to images (3frames per second)
 
