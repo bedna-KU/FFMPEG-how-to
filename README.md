@@ -26,7 +26,7 @@ ffmpeg -ss 00:00:30 -i input.mp4 -t 00:00:05 -vcodec copy -acodec copy output.mp
 
 ## Repair video (all frames as keyframe (keyint=1))
 
-fffmpeg -i cam2a.mp4 -vcodec libx264 -x264-params keyint=1:scenecut=0 -acodec copy cam2a2.mp4
+ffmpeg -i cam2a.mp4 -vcodec libx264 -x264-params keyint=1:scenecut=0 -acodec copy cam2a2.mp4
 
 # ImageMagick
 
