@@ -28,6 +28,10 @@ ffmpeg -ss 00:00:30 -i input.mp4 -t 00:00:05 -vcodec copy -acodec copy output.mp
 
 ffmpeg -i cam2a.mp4 -vcodec libx264 -x264-params keyint=1:scenecut=0 -acodec copy cam2a2.mp4
 
+## Merge videos
+
+ffmpeg -i "concat:input1.ts|input2.ts|input3.ts" -c copy output.ts
+
 # ImageMagick
 
 ## Resize images (no aspect ratio)
