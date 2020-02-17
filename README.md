@@ -24,13 +24,17 @@ ffmpeg -i video.mkv -i audio.mp3 -codec copy -shortest output.mkv
 
 ffmpeg -ss 00:00:30 -i input.mp4 -t 00:00:05 -vcodec copy -acodec copy output.mp4
 
-## Repair video (all frames as keyframe (keyint=1))
-
-ffmpeg -i cam2a.mp4 -vcodec libx264 -x264-params keyint=1:scenecut=0 -acodec copy cam2a2.mp4
-
 ## Merge videos
 
 ffmpeg -i "concat:input1.ts|input2.ts|input3.ts" -c copy output.ts
+
+## Optimize video (to DVD quality
+
+ffmpeg -i $infile -vcodec libx264 -crf 23 $outfile
+
+## Repair video (all frames as keyframe (keyint=1))
+
+ffmpeg -i cam2a.mp4 -vcodec libx264 -x264-params keyint=1:scenecut=0 -acodec copy cam2a2.mp4
 
 # ImageMagick
 
