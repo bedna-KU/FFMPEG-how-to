@@ -18,7 +18,7 @@ ffmpeg -i video.mkv -c copy -an video_no_sound.mkv
 
 ## Video - add audio
 
-ffmpeg -i video.mkv -i audio.mp3 -codec copy -shortest output.mkv
+ffmpeg -i video.mkv -i audio.mp3 -codec copy -shortest viseo_with_audio.mkv
 
 ## Video - cut (from position - length)
 
@@ -28,13 +28,13 @@ ffmpeg -ss 00:00:30 -i input.mp4 -t 00:00:05 -vcodec copy -acodec copy output.mp
 
 ffmpeg -i "concat:input1.ts|input2.ts|input3.ts" -c copy output.ts
 
-## Optimize video (to DVD quality
+## Optimize video (to DVD quality)
 
-ffmpeg -i $infile -vcodec libx264 -crf 23 $outfile
+ffmpeg -i input.mp4 -vcodec libx264 -crf 23 output.mp4
 
 ## Repair video (all frames as keyframe (keyint=1))
 
-ffmpeg -i cam2a.mp4 -vcodec libx264 -x264-params keyint=1:scenecut=0 -acodec copy cam2a2.mp4
+ffmpeg -i input.mp4 -vcodec libx264 -x264-params keyint=1:scenecut=0 -acodec copy output.mp4
 
 # ImageMagick
 
