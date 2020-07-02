@@ -36,7 +36,7 @@ ffmpeg -i input.mp4 -vcodec libx264 -crf 23 output.mp4
 
 ffmpeg -i input.mp4 -vcodec libx264 -x264-params keyint=1:scenecut=0 -acodec copy output.mp4
 
-## Web optimizez video - MP4
+## Web optimized video - MP4
 
 ### h264 video codec and aac audio codec because IE11 and earlier only support this combination
 
