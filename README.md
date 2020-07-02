@@ -36,6 +36,35 @@ ffmpeg -i input.mp4 -vcodec libx264 -crf 23 output.mp4
 
 ffmpeg -i input.mp4 -vcodec libx264 -x264-params keyint=1:scenecut=0 -acodec copy output.mp4
 
+## Web optimizez video - MP4
+
+### h264 video codec and aac audio codec because IE11 and earlier only support this combination
+
+ffmpeg -i input.mov -vcodec h264 -acodec aac -strict -2 output.mp4
+
+### For maximum compatibility
+
+ffmpeg -an -i input.mov -vcodec libx264 -pix_fmt yuv420p -profile:v baseline -level 3 output.mp4
+
+### VP8
+
+ffmpeg -i input.mov -vcodec libvpx -qmin 0 -qmax 50 -crf 10 -b:v 1M -acodec libvorbis output.webm
+
+### VP9
+
+ffmpeg -i input.mov -vcodec libvpx-vp9 -b:v 1M -acodec libvorbis output.webm
+
+### VP9 "Best Quality (Slowest) Recommended Settings"
+
+ffmpeg -i <source> -c:v libvpx-vp9 -pass 1 -b:v 1000K -threads 1 -speed 4 \
+  -tile-columns 0 -frame-parallel 0 -auto-alt-ref 1 -lag-in-frames 25 \
+  -g 9999 -aq-mode 0 -an -f webm /dev/null
+
+
+ffmpeg -i <source> -c:v libvpx-vp9 -pass 2 -b:v 1000K -threads 1 -speed 0 \
+  -tile-columns 0 -frame-parallel 0 -auto-alt-ref 1 -lag-in-frames 25 \
+  -g 9999 -aq-mode 0 -c:a libopus -b:a 64k -f webm out.webm
+
 # ImageMagick
 
 ## Resize images (no aspect ratio)
