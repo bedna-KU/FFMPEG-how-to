@@ -65,6 +65,10 @@ ffmpeg -i <source> -c:v libvpx-vp9 -pass 2 -b:v 1000K -threads 1 -speed 0 \
   -tile-columns 0 -frame-parallel 0 -auto-alt-ref 1 -lag-in-frames 25 \
   -g 9999 -aq-mode 0 -c:a libopus -b:a 64k -f webm out.webm
 
+### Video to gif
+
+INPUT=video.mp4; OUTPUT=anim.gif; palette="$(mktemp /tmp/ffmpeg2gifXXXXXX.png)"; FPS=3; WIDTH=400; filters="fps=$FPS,scale=$WIDTH:-1:flags=lanczos"; ffmpeg -v warning -i "$INPUT" -vf "$filters,palettegen" -y "$palette"; ffmpeg -v warning -i "$INPUT" -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y "$OUTPUT"
+
 # ImageMagick
 
 ## Resize images (no aspect ratio)
