@@ -12,6 +12,10 @@ ffmpeg -i input.ogv -vf scale=1600:1200 output.avi
 
 ffmpeg -i input.mkv -filter:v "setpts=2*PTS" output.mkv
 
+## Video - remove video
+
+ffmpeg -i input.mp4 -map 0:a output.mp3
+
 ## Video - remove audio
 
 ffmpeg -i video.mkv -c copy -an video_no_sound.mkv
